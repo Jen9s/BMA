@@ -6,17 +6,16 @@ epsilon = 10 ** (-5)
 def power_method(matrix):
     counter = 0
     A = matrix.dot(matrix.transpose())
-    #A = matrix
+    # A = matrix
 
     A_power = A
     y_0 = np.array([1, 0, 0, 0, 0]).transpose()
     z_k = y_0
 
     lambda_1 = np.dot(A.dot(z_k), z_k) / np.dot(z_k, z_k)
-    lambda_ = lambda_1 - 2*epsilon
+    lambda_ = lambda_1 - 2 * epsilon
 
-
-    while (abs(lambda_1 - lambda_) > epsilon):
+    while abs(lambda_1 - lambda_) > epsilon:
         print(f"{abs(lambda_1 - lambda_)} <= {epsilon}")
         print(f"\n------------------iteration {counter}------------------\n")
         print("z:")
@@ -25,15 +24,14 @@ def power_method(matrix):
         z_k = A_power.dot(y_0)
         print(z_k)
         print(f"norm:{norm}")
-        z_k = z_k.dot((norm)**(-1))
+        z_k = z_k.dot((norm) ** (-1))
         print(z_k)
         lambda_ = lambda_1
         print("lambda:")
         print(lambda_)
         lambda_1 = np.dot(A.dot(z_k), z_k) / np.dot(z_k, z_k)
         print(f"{lambda_1}\n")
-        #if counter == 2 : break
-        counter+=1
+        counter += 1
 
     print(f"{abs(lambda_1 - lambda_)} <= {epsilon}")
     print(f"\n-------------- Result ------------------\n")
